@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Fake News Detection</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+
+        <h2><i class="fas fa-shield-alt"></i> Project Info</h2>
+
+        <div class="info-box">
+            <h3>Dataset</h3>
+            <p>44,898 Articles</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Processed Data</h3>
+            <p>39,105 Articles</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Best Model</h3>
+            <p>Random Forest</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Accuracy</h3>
+            <p>99.57%</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Algorithms</h3>
+            <ul>
+                <li>Logistic Regression</li>
+                <li>KNN</li>
+                <li>Random Forest</li>
+                <li>MLPClassifier</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>Feature Extraction</h3>
+            <p>TF-IDF (5000)</p>
+        </div>
+
+    </aside>
+
+    <main class="content">
+
+        <header>
+
+            <h1>📰 AI-Powered Fake News Detection</h1>
+
+            <p>
+                Detect whether a news article is Real or Fake using Machine Learning
+                and Natural Language Processing.
+            </p>
+
+        </header>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Dataset</h3>
+                <h2>44,898</h2>
+            </div>
+
+            <div class="card">
+                <h3>Best Model</h3>
+                <h2>Random Forest</h2>
+            </div>
+
+            <div class="card">
+                <h3>Accuracy</h3>
+                <h2>99.57%</h2>
+            </div>
+
+            <div class="card">
+                <h3>TF-IDF</h3>
+                <h2>5000</h2>
+            </div>
+
+        </div>
+
+        <div class="prediction-box">
+
+            <form method="POST">
+
+                <textarea
+                    name="news"
+                    placeholder="Paste your news article here..."
+                    required></textarea>
+
+                <div class="buttons">
+
+                    <button type="submit" class="detect-btn">
+                        <i class="fas fa-search"></i>
+                        Detect News
+                    </button>
+
+                    <button type="reset" class="reset-btn">
+                        <i class="fas fa-rotate-left"></i>
+                        Clear
+                    </button>
+
+                </div>
+
+            </form>
+
+            {% if prediction %}
+
+            <div class="result">
+
+                {% if prediction == "REAL NEWS" %}
+
+                <h2 class="real">✅ {{ prediction }}</h2>
+
+                {% else %}
+
+                <h2 class="fake">❌ {{ prediction }}</h2>
+
+                {% endif %}
+
+                <h3>Confidence : {{ confidence }}%</h3>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
